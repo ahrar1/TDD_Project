@@ -1,0 +1,59 @@
+package com.app.TDDProject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class WebsiteTest {
+	
+	private WebDriver driver;
+    private String baseUrl = "https://mphasis1.lms.simplilearn.com/program/paths/2965/Mphasis%20Automation%20Testing%20Engineer/courses";
+
+    @BeforeClass
+    public void setUp() {
+       // System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        driver = new ChromeDriver();
+        driver.get(baseUrl);
+    }
+    
+    @Test
+    public void testPageTitle() {
+        String expectedTitle = "simPlyLearn";  
+        String actualTitle = driver.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle, "Page title doesn't match.");
+    }
+    
+    @Test
+	public void UsernameTest() {
+
+		UsernameCodee obj = new UsernameCodee();
+
+		String email = "ahrar.khan@mphasis.com";
+		
+
+		Assert.assertTrue(obj.isvalidUsername(email));
+	
+	}
+    @Test
+    public void PasswordTest() {
+    	Paasword ob=new Paasword();
+    	String pass = "abd@123#123";
+
+		Assert.assertTrue(ob.isvalidPassword(pass));
+    }
+    
+    
+    
+    @Test
+    public void testPresenceOfElement() {
+        WebElement element = driver.findElement(By.xpath("div[@title='Phase-1: Fundamentals of Automation Testing']")); 
+        Assert.assertTrue(element.isDisplayed(), "Element is not displayed.");
+    }
+    
+
+
+}
