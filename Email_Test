@@ -1,0 +1,15 @@
+package com.app.TDDProject;
+
+public class UsernameCodee {
+	
+	public boolean isvalidUsername(String email) {
+
+		if (email.contains("/") || (email.contains("#"))) {
+
+			return false;
+		} 
+		 else
+			return true;
+	}
+
+}
